@@ -27,20 +27,28 @@ const Home: NextPage = () => {
     setData(newData);
 
     const findSlices = (index: number) => {
-      const arrays = [];
+      const arrays: ICellItem[][] = [];
+
+      const appendArray = (start: number, end: number, increment: number) => {
+        const array = [];
+        for (let i = start; i < end; i += increment) {
+          const item = newData[i];
+          if (!item) continue;
+          array.push({ index: i, item: item });
+        }
+
+        if (array.length === lengthFibonacci && array.map((x) => x.index).indexOf(index) >= 0) {
+          arrays.push(array.map((x) => x.item));
+        }
+      };
 
       // get the row
       const minRow = Math.floor(index / lengthMatrix) * lengthMatrix;
       const maxRow = minRow + lengthMatrix - 1;
       let currentRow = minRow;
-      while (++currentRow <= maxRow) {
-        const array = [];
-        for (let i = currentRow; i < currentRow + lengthFibonacci; i++) {
-          if (newData[i]) {
-            array.push(newData[i]);
-          }
-        }
-        arrays.push(array);
+      while (currentRow <= maxRow) {
+        appendArray(currentRow, currentRow + lengthFibonacci, 1);
+        currentRow++;
       }
 
       // get the col
@@ -49,13 +57,7 @@ const Home: NextPage = () => {
       let currentCol = minCol;
 
       while (currentCol <= maxCol) {
-        const array = [];
-        for (let i = currentCol; i < currentCol + lengthMatrix * lengthFibonacci; i += lengthMatrix) {
-          if (newData[i]) {
-            array.push(newData[i]);
-          }
-        }
-        arrays.push(array);
+        appendArray(currentCol, currentCol + lengthMatrix * lengthFibonacci, lengthMatrix);
         currentCol += lengthMatrix;
       }
 
@@ -65,6 +67,7 @@ const Home: NextPage = () => {
     newData.map((item, i) => {
       if (item.isClicked && isFibonacciNumber(item.value)) {
         const slices: ICellItem[][] = findSlices(i);
+        console.log(slices);
         slices.map((slice: any) => {
           if (isFibonacciArray(slice.map((x: ICellItem) => x.value))) {
             slice.map((x: ICellItem) => {
