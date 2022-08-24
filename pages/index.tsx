@@ -39,6 +39,7 @@ const Home: NextPage = () => {
 
         if (array.length === lengthFibonacci && array.map((x) => x.index).indexOf(index) >= 0) {
           arrays.push(array.map((x) => x.item));
+          arrays.push(array.reverse().map((x) => x.item));
         }
       };
 
@@ -67,7 +68,6 @@ const Home: NextPage = () => {
     newData.map((item, i) => {
       if (item.isClicked && isFibonacciNumber(item.value)) {
         const slices: ICellItem[][] = findSlices(i);
-        console.log(slices);
         slices.map((slice: any) => {
           if (isFibonacciArray(slice.map((x: ICellItem) => x.value))) {
             slice.map((x: ICellItem) => {

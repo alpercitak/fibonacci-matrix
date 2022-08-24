@@ -12,8 +12,6 @@ const isFibonacciArray = (array: number[]) => {
     return false;
   }
 
-  array.sort((a: number, b: number) => a - b);
-
   for (let i = 2; i < array.length; i++) {
     const n0 = array[i];
     const n1 = array[i - 1];
