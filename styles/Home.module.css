@@ -8,17 +8,12 @@
   flex-wrap: wrap;
 }
 
-.row {
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-}
-
 .cellContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* width: calc(2% - 8px); */
+  /* width: calc(20% - 8px); */
+  /* width: calc(10% - 8px); */
   width: calc(2% - 8px);
 }
 
@@ -39,4 +34,7 @@
 
 .bgYellow {
   background-color: rgba(255, 255, 0, .7);
+}
+.bgGreen {
+  background-color: rgba(0, 255, 0, .7);
 }
