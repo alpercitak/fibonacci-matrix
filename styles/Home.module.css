@@ -19,7 +19,7 @@
 
 .cell {
   box-sizing: border-box;
-  border: 1px solid #EEE;
+  border: 1px solid #eee;
   border-radius: 20px;
   width: 20px;
   height: 20px;
@@ -29,12 +29,13 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  transition: background-color .6s;
+  transition: background-color 0.6s;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .bgYellow {
-  background-color: rgba(255, 255, 0, .7);
+  background-color: rgba(255, 255, 0, 0.7);
 }
 .bgGreen {
-  background-color: rgba(0, 255, 0, .7);
+  background-color: rgba(0, 255, 0, 0.7);
 }

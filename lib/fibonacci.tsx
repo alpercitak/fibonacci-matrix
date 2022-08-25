@@ -1,13 +1,32 @@
-const isPerfectSquare = (x: number) => {
+/**
+ * Checks if the given number is a perfect square
+ * @param x number
+ * @returns true | false
+ * @link https://en.wikipedia.org/wiki/Perfect_square
+ * @link https://www.cuemath.com/algebra/perfect-squares
+ */
+const isPerfectSquare = (x: number): boolean => {
   let s = Math.floor(Math.sqrt(x));
   return s * s == x;
 };
 
-const isFibonacciNumber = (x: number) => {
+/**
+ * Checks if the given number belongs to fibonacci sequence or not
+ * @param x number
+ * @returns true | false
+ * @link https://en.wikipedia.org/wiki/Fibonacci_number#Recognizing_Fibonacci_numbers
+ * @link https://math.stackexchange.com/questions/9999/checking-if-a-number-is-a-fibonacci-or-not
+ */
+const isFibonacciNumber = (x: number): boolean => {
   return isPerfectSquare(5 * x * x + 4) || isPerfectSquare(5 * x * x - 4);
 };
 
-const isFibonacciArray = (array: number[]) => {
+/**
+ * Checks if the given array is a fibonacci sequence or not
+ * @param array the array to search fibonacci sequence
+ * @returns true | false
+ */
+const isFibonacciArray = (array: number[]): boolean => {
   if (array.length <= 2) {
     return false;
   }
